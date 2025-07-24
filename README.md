@@ -1,13 +1,13 @@
-#导出镜像
+- 导出镜像
 docker save nginx:latest | gzip > nginx.tar.gz
 
-#导出所有本地 Docker 镜像 到一个 .tar 文件。
+- 导出所有本地 Docker 镜像 到一个 .tar 文件。
 docker save $(docker images -q) -o /root/images.tar
 
-#导入镜像  这个命令在本地机器使用 适用于压缩文件，流式解压加载，无需临时文件。
+- 导入镜像  这个命令在本地机器使用 适用于压缩文件，流式解压加载，无需临时文件。
 gunzip -c  nginx.tar.gz | docker load
 
-#从 .tar 文件加载 Docker 镜像（可以包含单个或多个镜像）。仅适用于未压缩的 .tar 文件，需提前解压。
+- 从 .tar 文件加载 Docker 镜像（可以包含单个或多个镜像）。仅适用于未压缩的 .tar 文件，需提前解压。
 docker load -i postgres.tar
 
 
